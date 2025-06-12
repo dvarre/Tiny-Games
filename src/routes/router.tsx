@@ -5,7 +5,7 @@ const router = createBrowserRouter([
     {
         path: "/",
         element: <LobbyCreation/>
-    }
+    },
 
     // TODO Créer une page et redirection pour les 404 et autres erreurs
 ]);
