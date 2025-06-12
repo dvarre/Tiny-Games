@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useStompClient } from "../components/WebSocketProvider";
 import { Player } from "../models/Player";
+import Lobby from "./Lobby";
 
 
 const LobbyCreation = () => {
@@ -22,6 +23,7 @@ const LobbyCreation = () => {
     client?.subscribe("/topic/room-created", (message) => {
         const messageInfos = JSON.parse(message.body);
         console.log("🎉 salle créée avec succès avec l'ID :", messageInfos.roomId, " et avec la session : ", messageInfos.sessionId);
+        setRoomId(messageInfos.roomId);
       })
 
       return () => {client?.unsubscribe("/topic/room-created")};
@@ -44,12 +46,15 @@ const LobbyCreation = () => {
 
   return (
     <div>
-      <h1>Créer une salle</h1>
-      <input placeholder="Pseudo" onChange={(e) => setUsername(e.target.value)}></input>
-      <button onClick={createRoom}>Créer</button>
-      <br></br>
-      <input placeholder="Room id" onChange={(e) => setRoomId(e.target.value.trim())}></input>
-      <button onClick={joinRoom}>Rejoindre</button>
+      {!roomId && <>
+        <h1>Créer une salle</h1>
+        <input placeholder="Pseudo" onChange={(e) => setUsername(e.target.value)}></input>
+        <button onClick={createRoom}>Créer</button>
+        <br></br>
+        <input placeholder="Room id" onChange={(e) => setRoomId(e.target.value.trim())}></input>
+        <button onClick={joinRoom}>Rejoindre</button>
+      </>}
+      {roomId && <Lobby roomId={roomId}/>}
     </div>
   );
 };
