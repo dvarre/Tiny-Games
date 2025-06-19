@@ -46,7 +46,7 @@ export const WebSocketProvider = ({ children }: { children: React.ReactNode }) =
 
   return (
     <WebSocketContext.Provider value={{ client: clientRef.current, connected, sessionId }}>
-      {connected ? children : <div>Connexion en cours...</div>}
+      {children}
     </WebSocketContext.Provider>
   );
 };
