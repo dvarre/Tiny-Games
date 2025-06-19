@@ -1,1 +1,14 @@
+@import url(https://fonts.bunny.net/css?family=poppins:500,700);
 @import "tailwindcss";
+
+@theme {  
+    --font-tan :"Tan Tankiwood";
+    --color-purple:oklch(0.81 0.1163 309.14);
+    --color-red:oklch(0.6265 0.2156 6.81);
+}
+
+@layer base {
+    h1{
+        @apply text-5xl font-tan text-shadow-lg;
+    }
+}
