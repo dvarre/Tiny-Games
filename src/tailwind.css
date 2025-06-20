@@ -9,6 +9,10 @@
 
 @layer base {
     h1{
-        @apply text-5xl font-tan text-shadow-lg;
+        @apply text-5xl font-tan text-shadow-lg mb-4;
+    }
+
+    h2{
+        @apply text-xl my-4;
     }
 }
